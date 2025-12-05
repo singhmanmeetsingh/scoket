@@ -2,8 +2,10 @@ import Kafka from 'kafkajs';
 
 
 const kafka = new Kafka({
-    clientId: 'movement-websocket',
-    brokers: ['localhost:9092']
+    // clientId: 'movement-websocket',
+    // brokers: [process.env.KAFKA_BROKERS]
+    clientId: process.env.KAFKA_CLIENT_ID || 'movement-websocket',
+    brokers: (process.env.KAFKA_BROKERS || 'localhost:9092').split(',')
 });
 
 
